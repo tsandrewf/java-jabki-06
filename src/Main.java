@@ -59,6 +59,17 @@ public class Main {
         creditAccount.withdraw(70000.0);
         creditAccount.displayInfo();
 
+        /*
+         * Создание массива Account[] accounts с объектами SavingsAccount и CreditAccount
+         * Демонстрация полиморфизма
+         */
+        System.out.println();
+        Account[] accounts = {account, savingsAccount, creditAccount};
+        for (Account accountInArr : accounts) {
+            accountInArr.withdraw(1000);
+            accountInArr.displayInfo();
+        }
+
         // 2. Система доставки
 
         // Базовый класс Vehicle
