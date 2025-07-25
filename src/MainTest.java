@@ -40,12 +40,12 @@ class MainTest {
         Account account = new Account();
 
         account.displayInfo();
-        Assertions.assertEquals("Баланс счета 1: 0.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + account.getAccount() + ": 0.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         account.deposit(1000.0);
         account.displayInfo();
-        Assertions.assertEquals("Баланс счета 1: 1000.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + account.getAccount() + ": 1000.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         account.deposit(-100.0);
@@ -54,7 +54,7 @@ class MainTest {
         outputStreamCaptor.reset();
         account.withdraw(300.0);
         account.displayInfo();
-        Assertions.assertEquals("Баланс счета 1: 700.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + account.getAccount() + ": 700.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         account.withdraw(800.0);
@@ -72,17 +72,17 @@ class MainTest {
 
         outputStreamCaptor.reset();
         savingsAccount.displayInfo();
-        Assertions.assertEquals("Баланс сберегательного счета 2: 0.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс сберегательного счета " + savingsAccount.getAccount() + ": 0.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         savingsAccount.deposit(1000.0);
         savingsAccount.displayInfo();
-        Assertions.assertEquals("Баланс сберегательного счета 2: 1000.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс сберегательного счета " + savingsAccount.getAccount() + ": 1000.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         savingsAccount.applyInterest();
         savingsAccount.displayInfo();
-        Assertions.assertEquals("Баланс сберегательного счета 2: 1200.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс сберегательного счета " + savingsAccount.getAccount() + ": 1200.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         savingsAccount.withdraw(1100);
@@ -95,16 +95,16 @@ class MainTest {
         CreditAccount creditAccount = new CreditAccount();
 
         creditAccount.displayInfo();
-        Assertions.assertEquals("Баланс счета 3: 0.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + creditAccount.getAccount() + ": 0.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         creditAccount.withdraw(60000.0);
         creditAccount.displayInfo();
-        Assertions.assertEquals("Баланс счета 3: -60000.0", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + creditAccount.getAccount() + ": -60000.0", outputStreamCaptor.toString().trim());
 
         outputStreamCaptor.reset();
         creditAccount.withdraw(50000.0);
-        Assertions.assertEquals("Баланс счета 3 после снятия (-110000.0) не должен превышать кредитный лимит (100000.0)", outputStreamCaptor.toString().trim());
+        Assertions.assertEquals("Баланс счета " + creditAccount.getAccount() + " после снятия (-110000.0) не должен превышать кредитный лимит (100000.0)", outputStreamCaptor.toString().trim());
     }
 
     @Test

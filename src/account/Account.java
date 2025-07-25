@@ -1,12 +1,13 @@
 package account;
 
+import java.util.UUID;
+
 public class Account {
-    private final int accountNumber;
+    private final UUID accountNumber;
     protected double balance;
-    static private int accountNumberMax = 0;
 
     public Account() {
-        this.accountNumber = ++accountNumberMax;
+        this.accountNumber = UUID.randomUUID();
     }
 
     public void deposit(double amount) {
@@ -31,7 +32,7 @@ public class Account {
         System.out.printf("Баланс счета %s: %s\n", this.accountNumber, this.balance);
     }
 
-    protected int getAccount() {
+    public UUID getAccount() {
         return this.accountNumber;
     }
 }
