@@ -5,8 +5,8 @@ public class CreditAccount extends Account {
 
     @Override
     public void withdraw(double amount) {
-        if (amount <= 0) {
-            System.out.printf("Сумма снятия (%s) должна быть больше нуля\n", amount);
+        if (amount <= this.balance) {
+            super.withdraw(amount);
         } else if (amount <= this.balance + this.creditLimit) {
             this.balance -= amount;
         } else {
